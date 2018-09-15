@@ -1,0 +1,36 @@
+<h3>Top Heroes</h3>
+<div class="grid grid-pad">
+    <a *ngFor="let hero of heroes" class="col-1-4"
+        routerLink="/detail/{{hero.id}}">
+        <div class="module hero">
+            <h4>{{hero.name}}</h4>
+        </div>
+    </a>
+</div>
+
+
+
+<h3 class="first">Heroes as table</h3>
+<p-table [columns]="cols" [value]="heroes" selectionMode="single" [(selection)]="selectedHero">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+        </th>
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+    </td>
+</tr>
+</ng-template>
+<ng-template pTemplate="summary">
+    <div style="text-align: left">
+        Selected Hero {{selectedHero ? selectedHero.id + ' - ' + selectedHero.name : 'none'}}
+    </div>
+</ng-template>
+</p-table>
+
+<app-hero-search></app-hero-search>
