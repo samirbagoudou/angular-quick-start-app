@@ -11,7 +11,7 @@
 
 
 <h3 class="first">Heroes as table</h3>
-<p-table [columns]="cols" [value]="heroes" selectionMode="single" [(selection)]="selectedHero">
+<p-table [columns]="cols" [value]="heroes" selectionMode="single" [(selection)]="selectedHero" (onRowSelect)="onRowSelect($event)">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">

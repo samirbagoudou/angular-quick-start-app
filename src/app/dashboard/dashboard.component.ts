@@ -27,4 +27,8 @@ export class DashboardComponent implements OnInit {
         this.heroService.getHeroes()
             .subscribe(heroes => this.heroes = heroes.slice(1, 5));
     }
+
+    onRowSelect(event) {
+        this.heroService.log("Hero selected : " + event.data.name);
+    }
 }
